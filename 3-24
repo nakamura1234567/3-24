@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RPQM4KM87"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3RPQM4KM87');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>異性から見たあなたの魅力は？</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    :root{
+      --bg1:#ffeef6;
+      --bg2:#f4ecff;
+      --bg3:#edf7ff;
+      --main:#5b63e6;
+      --main-soft:#7986ff;
+      --pink:#ff74a8;
+      --pink-soft:#ff9bc2;
+      --text:#4a5470;
+      --card:#ffffffcc;
+    }
+
+    body{
+      margin:0;
+      font-family:"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,192,214,.95) 0, rgba(255,192,214,0) 30%),
+        radial-gradient(circle at 88% 12%, rgba(215,204,255,.92) 0, rgba(215,204,255,0) 28%),
+        radial-gradient(circle at 18% 86%, rgba(194,235,255,.95) 0, rgba(194,235,255,0) 30%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 48%, var(--bg3) 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.95) 0 1.6px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,.75) 0 1.2px, transparent 1.7px),
+        radial-gradient(circle, rgba(255,255,255,.6) 0 1px, transparent 1.5px);
+      background-size:120px 120px, 180px 180px, 90px 90px;
+      background-position:20px 30px, 80px 90px, 50px 10px;
+      opacity:.55;
+      z-index:0;
+    }
+
+    .wrapper{
+      max-width:430px;
+      margin:0 auto;
+      padding:22px 16px 36px;
+      position:relative;
+      z-index:1;
+    }
+
+    .floating{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .shape{
+      position:absolute;
+      opacity:.82;
+    }
+
+    .cross{
+      width:22px;
+      height:22px;
+    }
+    .cross::before,
+    .cross::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:22px;
+      height:6px;
+      border-radius:999px;
+      background:#ff909e;
+      transform:translate(-50%,-50%) rotate(45deg);
+    }
+    .cross::after{
+      transform:translate(-50%,-50%) rotate(-45deg);
+    }
+
+    .wave{
+      width:40px;
+      height:14px;
+      border-top:6px solid #9c8fff;
+      border-radius:999px;
+      transform:rotate(-8deg);
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#ffd95d;
+    }
+
+    .slash{
+      width:9px;
+      height:28px;
+      border-radius:999px;
+      background:#ffab75;
+      transform:rotate(-18deg);
+    }
+
+    .tick{
+      width:26px;
+      height:16px;
+      border-left:6px solid #8fdc8f;
+      border-bottom:6px solid #8fdc8f;
+      transform:rotate(-45deg);
+      border-bottom-left-radius:5px;
+    }
+
+    .sparkle{
+      width:16px;
+      height:16px;
+      background:radial-gradient(circle, #fff 0 32%, transparent 34% 100%);
+    }
+    .sparkle::before,
+    .sparkle::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      background:#fff;
+      border-radius:999px;
+      transform:translate(-50%,-50%);
+    }
+    .sparkle::before{ width:2px; height:16px; }
+    .sparkle::after{ width:16px; height:2px; }
+
+    .card{
+      background:var(--card);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.72);
+      border-radius:30px;
+      padding:26px 18px 22px;
+      box-shadow:0 14px 34px rgba(110,109,177,.16);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -54px auto;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,182,208,.22), rgba(255,182,208,0));
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-50px auto auto -40px;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(183,223,255,.24), rgba(183,223,255,0));
+    }
+
+    .title-small{
+      text-align:center;
+      font-size:14px;
+      color:#7c73a5;
+      font-weight:700;
+      margin-bottom:8px;
+      position:relative;
+      z-index:1;
+    }
+
+    .title-main{
+      text-align:center;
+      font-size:clamp(28px, 8.5vw, 40px);
+      font-weight:900;
+      color:var(--main);
+      margin-bottom:14px;
+      line-height:1.25;
+      position:relative;
+      z-index:1;
+    }
+
+    .description{
+      text-align:center;
+      line-height:2;
+      font-size:15px;
+      color:#4e5772;
+      margin-bottom:20px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .choice{
+      border:none;
+      background:rgba(255,255,255,.9);
+      border-radius:22px;
+      padding:10px 10px 12px;
+      box-shadow:0 10px 22px rgba(126,127,170,.12);
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .choice:active{
+      transform:scale(.98);
+    }
+
+    .choice img{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      display:block;
+      border-radius:16px;
+      background:#f5f5f5;
+    }
+
+    .label{
+      padding:10px 4px 0;
+      font-weight:900;
+      font-size:16px;
+      text-align:center;
+      color:#27314f;
+    }
+
+    .result{
+      display:none;
+      margin-top:18px;
+      padding:22px 18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,245,255,.96));
+      border-radius:24px;
+      box-shadow:0 12px 26px rgba(126,127,170,.12);
+      border:1px solid rgba(255,255,255,.8);
+      position:relative;
+      z-index:1;
+    }
+
+    .result.show{
+      display:block;
+      animation:pop .25s ease;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:7px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--pink-soft), var(--pink));
+      color:#fff;
+      font-weight:800;
+      font-size:13px;
+      margin-bottom:12px;
+      box-shadow:0 8px 18px rgba(255,111,168,.24);
+    }
+
+    .result h2{
+      margin:0 0 6px;
+      font-size:21px;
+      line-height:1.5;
+      color:var(--main);
+    }
+
+    .result h3{
+      margin:0 0 12px;
+      font-size:26px;
+      color:var(--pink);
+      line-height:1.35;
+    }
+
+    .result p{
+      margin:0;
+      line-height:2;
+      font-size:15px;
+      white-space:pre-line;
+    }
+
+    .cta-box{
+      margin-top:18px;
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(255,241,247,1), rgba(244,241,255,1));
+      padding:16px 14px;
+      text-align:center;
+    }
+
+    .cta-text{
+      color:var(--pink);
+      font-weight:900;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .reset{
+      margin-top:20px;
+      text-align:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .reset button{
+      border:none;
+      background:linear-gradient(135deg, var(--main-soft), var(--main));
+      color:#fff;
+      font-size:21px;
+      padding:15px 34px;
+      border-radius:999px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 12px 22px rgba(76,104,232,.26);
+    }
+
+    @keyframes pop{
+      from{
+        opacity:0;
+        transform:translateY(10px) scale(.98);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating" aria-hidden="true">
+    <span class="shape cross" style="left:9%; top:11%;"></span>
+    <span class="shape slash" style="left:26%; top:8%;"></span>
+    <span class="shape wave" style="left:72%; top:10%;"></span>
+    <span class="shape tick" style="left:15%; top:23%;"></span>
+    <span class="shape dot" style="left:89%; top:18%;"></span>
+    <span class="shape cross" style="left:84%; top:33%; transform:scale(.8);"></span>
+    <span class="shape wave" style="left:8%; top:76%; transform:scale(.8) rotate(8deg);"></span>
+    <span class="shape slash" style="left:88%; top:74%;"></span>
+    <span class="shape tick" style="left:80%; top:86%;"></span>
+    <span class="shape sparkle" style="left:71%; top:61%;"></span>
+  </div>
+
+  <div class="wrapper">
+    <div class="card">
+      <div class="title-small">異性から見た</div>
+      <div class="title-main">あなたの魅力は？</div>
+
+      <div class="description">
+        どんなタイプとして<br>
+        モテやすいのかを診断します。<br>
+        次の4つの中から一番気になるものを<br>
+        直感で選んでください。
+      </div>
+
+      <div class="grid">
+        <button class="choice" onclick="showResult('bouquet')">
+          <img src="bouquet.png" alt="花束">
+          <div class="label">① 花束</div>
+        </button>
+
+        <button class="choice" onclick="showResult('perfume')">
+          <img src="perfume.png" alt="香水">
+          <div class="label">② 香水</div>
+        </button>
+
+        <button class="choice" onclick="showResult('candle')">
+          <img src="candle.png" alt="キャンドル">
+          <div class="label">③ キャンドル</div>
+        </button>
+
+        <button class="choice" onclick="showResult('coffee')">
+          <img src="coffee2.png" alt="カフェラテ">
+          <div class="label">④ カフェラテ</div>
+        </button>
+      </div>
+
+      <div id="result" class="result"></div>
+
+      <div class="reset">
+        <button onclick="resetResult()">もう一度選ぶ</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const results = {
+      bouquet:{
+        title:"① 花束を選んだあなた",
+        type:"💐 ナチュラルモテタイプ",
+        text:"無理をしない自然体な魅力で\n周りから好かれやすい人です。\n気づいたら好意を持たれていることが多く、\n安心感のある存在として\n長く想われる傾向があります。"
+      },
+      perfume:{
+        title:"② 香水を選んだあなた",
+        type:"✨ 雰囲気モテタイプ",
+        text:"空気感や距離感の取り方が上手く、\n一緒にいるだけで印象に残る人です。\n強くアピールしなくても\n自然と異性を惹きつける魅力があります。"
+      },
+      candle:{
+        title:"③ キャンドルを選んだあなた",
+        type:"🕯️ ギャップモテタイプ",
+        text:"普段との違いや意外性で\n相手をドキッとさせるタイプ。\n知れば知るほど惹かれるため、\n深くハマる恋愛になりやすい傾向があります。"
+      },
+      coffee:{
+        title:"④ カフェラテを選んだあなた",
+        type:"☕ 癒しモテタイプ",
+        text:"一緒にいると安心できる存在で、\n自然と人が集まるタイプです。\n無理に頑張らなくても\n「そばにいたい」と思われやすい魅力があります。"
+      }
+    };
+
+    function showResult(key){
+      const r = document.getElementById('result');
+      const data = results[key];
+
+      r.innerHTML = `
+        <div class="badge">診断結果</div>
+        <h2>${data.title}</h2>
+        <h3>${data.type}</h3>
+        <p>${data.text}</p>
+        <div class="cta-box">
+          <div class="cta-text">診断結果をもとに、<br>先生に相談してみよう！</div>
+        </div>
+      `;
+
+      r.classList.add('show');
+      setTimeout(() => {
+        r.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      }, 60);
+    }
+
+    function resetResult(){
+      const r = document.getElementById('result');
+      r.classList.remove('show');
+      r.innerHTML = '';
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }
+  </script>
+
+</body>
+</html>
